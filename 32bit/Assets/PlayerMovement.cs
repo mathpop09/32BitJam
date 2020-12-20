@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
+    public float speed = 5.0f;
     // Start is called before the first frame update
     void Start()
     {
@@ -11,8 +12,18 @@ public class PlayerMovement : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         
+    }
+
+    void WalkRight()
+    {
+        this.transform.position += new Vector3 (speed, 0.0f, 0.0f); 
+    }
+
+    void WalkLeft()
+    {
+        this.transform.position -= new Vector3(speed, 0.0f, 0.0f);
     }
 }
