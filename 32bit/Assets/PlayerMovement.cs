@@ -11,16 +11,35 @@ public class PlayerMovement : MonoBehaviour
     public int turnSpeed = 1;
 
     bool grounded = false;
-    Collider groundCollider; 
-    // Start is called before the first frame update
+    Collider groundCollider;
+    public AudioClip jumpSound;
+    AudioSource audioPlayer;
+   // Start is called before the first frame update
+
+    
     void Start()
     {
         RightRot = this.transform.localRotation.eulerAngles;
         LeftRot = RightRot + new Vector3(0, 180, 0);
 
+        audioPlayer = this.GetComponent<AudioSource>();
         groundCollider = this.GetComponent<BoxCollider>();
     }
     
+    void Update()
+    {
+        // Jump
+        Debug.Log(grounded);
+        if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
+        {
+            Debug.Log("Jump");
+            if (grounded == true)
+            {
+                Jump();
+                Debug.Log("Jumped");
+            }
+        }
+    }
     // Update is called once per frame
     void FixedUpdate()
     {
@@ -32,16 +51,7 @@ public class PlayerMovement : MonoBehaviour
         {
             this.transform.localEulerAngles += new Vector3(0, turnSpeed, 0);
         }
-        // Jump
-        Debug.Log(grounded);
-        if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow))
-        {
-            Debug.Log("Jump");
-            if (grounded == true) {
-                Jump();
-                Debug.Log("Jumped");
-            }
-        }
+        
 
         //Vertical Movement
         if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
@@ -70,16 +80,25 @@ public class PlayerMovement : MonoBehaviour
 
     void Jump()
     {
-        this.GetComponent<Rigidbody>().velocity = new Vector3(0.0f, 5.0f, 0.0f); 
+        audioPlayer.clip = jumpSound;
+        audioPlayer.Play();
+        Debug.Log("played");
+        this.GetComponent<Rigidbody>().velocity = new Vector3(0.0f, 5.0f, 0.0f);
+        
     }
 
     private void OnTriggerExit(Collider groundCollider)
     {
         grounded = false; 
     }
-
+    private void OnTriggerEnter(Collider groundCollider)
+    {
+        grounded = true;
+    }
     private void OnTriggerStay(Collider groundCollider)
     {
         grounded = true;
     }
+
+   
 }
