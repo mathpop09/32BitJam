@@ -9,30 +9,41 @@ public class PlayerMovement : MonoBehaviour
     private Vector3 LeftRot;
     private bool turnRightMode = true; 
     public int turnSpeed = 1;
+
+    bool grounded = false;
+    Collider groundCollider; 
     // Start is called before the first frame update
     void Start()
     {
         RightRot = this.transform.localRotation.eulerAngles;
         LeftRot = RightRot + new Vector3(0, 180, 0);
+
+        groundCollider = this.GetComponent<BoxCollider>();
     }
     
     // Update is called once per frame
     void FixedUpdate()
     {
-        Debug.Log(Mathf.Abs(Quaternion.Dot(transform.localRotation, Quaternion.Euler(LeftRot))));
         if (turnRightMode == false && (Quaternion.Angle(transform.localRotation, Quaternion.Euler(LeftRot))) > 0.0000001)
         {
-            Debug.Log("Inside");
-            Debug.Log(LeftRot);
-            Debug.Log(transform.localEulerAngles);
             this.transform.localEulerAngles -= new Vector3(0, turnSpeed, 0);
-            Debug.Log(Mathf.Abs(Quaternion.Dot(transform.localRotation, Quaternion.Euler(LeftRot))));
         }
         else if (turnRightMode == true && (Quaternion.Angle(transform.localRotation, Quaternion.Euler(RightRot))) > 0.0000001)
         {
             this.transform.localEulerAngles += new Vector3(0, turnSpeed, 0);
         }
+        // Jump
+        Debug.Log(grounded);
+        if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow))
+        {
+            Debug.Log("Jump");
+            if (grounded == true) {
+                Jump();
+                Debug.Log("Jumped");
+            }
+        }
 
+        //Vertical Movement
         if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
         {
             WalkLeft();
@@ -55,5 +66,20 @@ public class PlayerMovement : MonoBehaviour
     void WalkLeft()
     {
         this.transform.position -= new Vector3(speed, 0.0f, 0.0f);
+    }
+
+    void Jump()
+    {
+        this.GetComponent<Rigidbody>().velocity = new Vector3(0.0f, 5.0f, 0.0f); 
+    }
+
+    private void OnTriggerExit(Collider groundCollider)
+    {
+        grounded = false; 
+    }
+
+    private void OnTriggerStay(Collider groundCollider)
+    {
+        grounded = true;
     }
 }
