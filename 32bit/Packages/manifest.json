@@ -1,6 +1,5 @@
 {
   "dependencies": {
-    "com.hauntedpsx.render-pipelines.psx": "https://github.com/pastasfuture/com.hauntedpsx.render-pipelines.psx.git",
     "com.unity.2d.pixel-perfect": "3.0.2",
     "com.unity.2d.sprite": "1.0.0",
     "com.unity.collab-proxy": "1.3.9",
