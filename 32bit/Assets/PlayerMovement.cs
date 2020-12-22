@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
+    private float jumpPower = 7.5f;
     public float speed = 0.1f;
     private Vector3 RightRot;
     private Vector3 LeftRot;
@@ -83,7 +84,7 @@ public class PlayerMovement : MonoBehaviour
         audioPlayer.clip = jumpSound;
         audioPlayer.Play();
         Debug.Log("played");
-        this.GetComponent<Rigidbody>().velocity = new Vector3(0.0f, 5.0f, 0.0f);
+        this.GetComponent<Rigidbody>().velocity = new Vector3(0.0f, jumpPower, 0.0f);
         
     }
 
