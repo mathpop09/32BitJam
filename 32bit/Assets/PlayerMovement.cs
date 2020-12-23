@@ -15,6 +15,10 @@ public class PlayerMovement : MonoBehaviour
     Collider groundCollider;
     public AudioClip jumpSound;
     AudioSource audioPlayer;
+
+    public bool moveable = true;
+    public float disableLength;
+    private float disableTimer; 
    // Start is called before the first frame update
 
     
@@ -29,43 +33,56 @@ public class PlayerMovement : MonoBehaviour
     
     void Update()
     {
-        // Jump
-        Debug.Log(grounded);
-        if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
+        if (!moveable)
         {
-            Debug.Log("Jump");
-            if (grounded == true)
+            disableTimer += Time.deltaTime;
+            if (disableTimer >= disableLength)
             {
-                Jump();
-                Debug.Log("Jumped");
+                moveable = true;
+            }
+        }
+        else
+        {
+            // Jump
+            if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
+            {
+                Debug.Log("Jump");
+                if (grounded == true)
+                {
+                    Jump();
+                    Debug.Log("Jumped");
+                }
             }
         }
     }
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (turnRightMode == false && (Quaternion.Angle(transform.localRotation, Quaternion.Euler(LeftRot))) > 0.0000001)
+        if (moveable)
         {
-            this.transform.localEulerAngles -= new Vector3(0, turnSpeed, 0);
-        }
-        else if (turnRightMode == true && (Quaternion.Angle(transform.localRotation, Quaternion.Euler(RightRot))) > 0.0000001)
-        {
-            this.transform.localEulerAngles += new Vector3(0, turnSpeed, 0);
-        }
-        
+            if (turnRightMode == false && (Quaternion.Angle(transform.localRotation, Quaternion.Euler(LeftRot))) > 0.0000001)
+            {
+                this.transform.localEulerAngles -= new Vector3(0, turnSpeed, 0);
+            }
+            else if (turnRightMode == true && (Quaternion.Angle(transform.localRotation, Quaternion.Euler(RightRot))) > 0.0000001)
+            {
+                this.transform.localEulerAngles += new Vector3(0, turnSpeed, 0);
+            }
 
-        //Vertical Movement
-        if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
-        {
-            WalkLeft();
-            Debug.Log("Left");
-            turnRightMode = false;
-        }
-        else if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
-        {
-            WalkRight();
-            Debug.Log("Right");
-            turnRightMode = true; 
+
+            //Vertical Movement
+            if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
+            {
+                WalkLeft();
+                Debug.Log("Left");
+                turnRightMode = false;
+            }
+            else if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
+            {
+                WalkRight();
+                Debug.Log("Right");
+                turnRightMode = true;
+            }
         }
     }
 
