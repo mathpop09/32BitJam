@@ -21,6 +21,7 @@ public class DestroyableCubes : MonoBehaviour
         originalPos = this.transform.position;
         thisTexture = this.GetComponent<MeshRenderer>(); 
         thisTexture.material = aliveMat;
+        this.GetComponent<Rigidbody>().isKinematic = true;
     }
 
     // Update is called once per frame
@@ -41,17 +42,27 @@ public class DestroyableCubes : MonoBehaviour
                 Destroy(this);
             }
         }
-        else if ((this.transform.position - originalPos).magnitude > 0.5f)
-        {
-            destructionActivated = true;
-            destroyBlock();
-        }  
+        //else if ((this.transform.position - originalPos).magnitude > 0.5f)
     }
 
+    private void OnCollisionStay (Collision collision)
+    {
+        Debug.Log("ZUCK");
+        Debug.Log(collision.gameObject.tag);
+        if (collision.gameObject.tag == "Enemy")
+        {
+            Debug.Log("ZUCK");
+            destructionActivated = true;
+            destroyBlock();
+        }
+    }
     //destroys block's collsion
     void destroyBlock()
     {
         thisTexture.material = deadMat;
+        this.GetComponent<Rigidbody>().useGravity = true;
+        this.GetComponent<Rigidbody>().isKinematic = false;
+
         Destroy(this.GetComponent<BoxCollider>());
     }
 }
