@@ -6,7 +6,8 @@ public class TriggerOrnament : MonoBehaviour
 {
     public GameObject cameraToShake;
     public GameObject monster;
-    public GameObject player; 
+    public GameObject player;
+    public GameObject InvisibleWall;
     // Start is called before the first frame update
     void Start()
     {
@@ -22,6 +23,7 @@ public class TriggerOrnament : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         Debug.Log("Go!");
+        Destroy(InvisibleWall);
         this.GetComponent<SpriteRenderer>().enabled = false;
         cameraToShake.GetComponent<cameraController>().shake();
         monster.GetComponent<propelAngry>().startMove();
