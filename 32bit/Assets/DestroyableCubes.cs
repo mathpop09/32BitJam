@@ -60,6 +60,7 @@ public class DestroyableCubes : MonoBehaviour
     void destroyBlock()
     {
         thisTexture.material = deadMat;
+        this.GetComponent<AudioSource>().Play();
         this.GetComponent<Rigidbody>().useGravity = true;
         this.GetComponent<Rigidbody>().isKinematic = false;
 

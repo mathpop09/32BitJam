@@ -1,10 +1,13 @@
 ScriptsOnlyBuild:
   usedScripts:
     Assembly-CSharp.dll:
+    - DestroyableCubes
     - PlayerMovement
+    - TriggerOrnament
     - cameraController
     - globalController
-    - helpText
+    - movePlayerUp
+    - propelAngry
     Unity.2D.PixelPerfect.dll:
     - UnityEngine.U2D.PixelPerfectCamera
     Unity.Rider.Editor.dll:
@@ -14,11 +17,6 @@ ScriptsOnlyBuild:
     - TMPro.TMP_Settings
     - TMPro.TMP_SpriteAsset
     - TMPro.TMP_StyleSheet
-    UnityEditor.Graphs.dll:
-    - UnityEditor.Graphs.AnimationBlendTree.Graph
-    - UnityEditor.Graphs.AnimationBlendTree.GraphGUI
-    - UnityEditor.Graphs.AnimationStateMachine.Graph
-    - UnityEditor.Graphs.AnimationStateMachine.GraphGUI
     UnityEditor.TestRunner.dll:
     - UnityEditor.TestTools.TestRunner.Api.CallbacksHolder
     - UnityEditor.TestTools.TestRunner.TestListCacheData
@@ -26,11 +24,8 @@ ScriptsOnlyBuild:
     UnityEngine.UI.dll:
     - UnityEngine.EventSystems.EventSystem
     - UnityEngine.EventSystems.StandaloneInputModule
-    - UnityEngine.UI.CanvasScaler
-    - UnityEngine.UI.GraphicRaycaster
-    - UnityEngine.UI.Text
   sceneClasses:
-    Assets/Scenes/SampleScene.unity:
+    Assets/Scenes/Scene2/Ornaments_Level.unity:
     - Class: 1
       Script: {instanceID: 0}
     - Class: 4
@@ -57,50 +52,44 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 65
       Script: {instanceID: 0}
-    - Class: 74
-      Script: {instanceID: 0}
     - Class: 81
       Script: {instanceID: 0}
     - Class: 82
       Script: {instanceID: 0}
     - Class: 83
       Script: {instanceID: 0}
-    - Class: 91
-      Script: {instanceID: 0}
-    - Class: 95
-      Script: {instanceID: 0}
     - Class: 104
       Script: {instanceID: 0}
     - Class: 108
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 11854}
+      Script: {instanceID: 12184}
     - Class: 114
-      Script: {instanceID: 12038}
+      Script: {instanceID: 12300}
     - Class: 114
-      Script: {instanceID: 12298}
+      Script: {instanceID: 12354}
     - Class: 114
-      Script: {instanceID: 12352}
+      Script: {instanceID: 12546}
     - Class: 114
-      Script: {instanceID: 12544}
+      Script: {instanceID: 12578}
     - Class: 114
-      Script: {instanceID: 12576}
+      Script: {instanceID: 12740}
     - Class: 114
-      Script: {instanceID: 13002}
+      Script: {instanceID: 13006}
     - Class: 114
-      Script: {instanceID: 13270}
+      Script: {instanceID: 13140}
     - Class: 114
-      Script: {instanceID: 13286}
+      Script: {instanceID: 13276}
     - Class: 114
-      Script: {instanceID: 13428}
+      Script: {instanceID: 13292}
     - Class: 114
-      Script: {instanceID: 13572}
+      Script: {instanceID: 13434}
     - Class: 114
-      Script: {instanceID: 13754}
+      Script: {instanceID: 13740}
     - Class: 114
-      Script: {instanceID: 13852}
+      Script: {instanceID: 13762}
     - Class: 114
-      Script: {instanceID: 13972}
+      Script: {instanceID: 13980}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -113,21 +102,9 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 196
       Script: {instanceID: 0}
-    - Class: 198
-      Script: {instanceID: 0}
-    - Class: 199
-      Script: {instanceID: 0}
     - Class: 212
       Script: {instanceID: 0}
     - Class: 213
-      Script: {instanceID: 0}
-    - Class: 222
-      Script: {instanceID: 0}
-    - Class: 223
-      Script: {instanceID: 0}
-    - Class: 224
-      Script: {instanceID: 0}
-    - Class: 850595691
       Script: {instanceID: 0}
   scriptHashData:
   - hash:
@@ -228,6 +205,12 @@ ScriptsOnlyBuild:
     className: GridLayoutGroup
   - hash:
       serializedVersion: 2
+      Hash: 56ce74bc859edf65e8166c139dd23c01
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: movePlayerUp
+  - hash:
+      serializedVersion: 2
       Hash: 8aa3d6ccbcb54ee8db6c1229854adaaa
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.UI
@@ -264,7 +247,7 @@ ScriptsOnlyBuild:
     className: AspectRatioFitter
   - hash:
       serializedVersion: 2
-      Hash: 83e769eee07fc231384c812eedbb8224
+      Hash: 04c8fb973fbd19d4e96ad873d7473c29
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: cameraController
@@ -342,6 +325,12 @@ ScriptsOnlyBuild:
     className: Selectable
   - hash:
       serializedVersion: 2
+      Hash: a01ca15e7b1ee990bd058ce38b02fc76
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: TriggerOrnament
+  - hash:
+      serializedVersion: 2
       Hash: 040dd48e3a027d5424519a5fa2009df4
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.UI
@@ -372,7 +361,7 @@ ScriptsOnlyBuild:
     className: TextContainer
   - hash:
       serializedVersion: 2
-      Hash: a54aaf19bdeda43c471dbcc076ed8bbf
+      Hash: 6b911cfd8c19b9d5398765380dbba753
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: PlayerMovement
@@ -394,6 +383,12 @@ ScriptsOnlyBuild:
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.UI
     className: VerticalLayoutGroup
+  - hash:
+      serializedVersion: 2
+      Hash: a0d7984cfbc5195d96778136b525acc6
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: propelAngry
   - hash:
       serializedVersion: 2
       Hash: f7bb6096199e0cf058d5d69878184cf4
@@ -478,6 +473,12 @@ ScriptsOnlyBuild:
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
     className: MarkerTrack
+  - hash:
+      serializedVersion: 2
+      Hash: 90ea193aa861204ade5c19d9c235176f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: DestroyableCubes
   - hash:
       serializedVersion: 2
       Hash: d791aa6007fa3640be1164ea75bb087d
@@ -588,5 +589,5 @@ ScriptsOnlyBuild:
     className: PlayableTrack
   platform: 5
   scenePathNames:
-  - Assets/Scenes/SampleScene.unity
-  playerPath: C:/Users/mathp/OneDrive/Desktop/32BitJam/builds/32bit.exe
+  - Assets/Scenes/Scene2/Ornaments_Level.unity
+  playerPath: C:/Users/mathp/OneDrive/Desktop/32BitJam/builds/build/32bit.exe
