@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class tetrisPiece : MonoBehaviour
 {
+    public GameObject presentTrigger;
+    private bool startTet = false;
+
     public int dropOrder;
     private Vector3 InitialPosition;
     private MeshRenderer[] childRenderers;
@@ -33,23 +36,30 @@ public class tetrisPiece : MonoBehaviour
         childRenderers[2].enabled = false;
         childRenderers[3].enabled = false; 
 
-        waitTime = dropOrder * 7.0f;
+        waitTime = (dropOrder - 1) * 7.0f;
     }
 
     // Update is called once per frame
     void Update()
     {
-        //make sprite visible below a certain position
-        if (waitTimer >= waitTime)
+        if (this.startTet == false && presentTrigger.GetComponent<presentTrigger>().startTet == true)
         {
-            if (notVisible == true) 
-                makeVisible();
-
-            movePiece();
+            this.startTet = true;
         }
-        else
+        else if (this.startTet == true)
         {
-            waitTimer += Time.deltaTime;
+            //make sprite visible below a certain position
+            if (waitTimer >= waitTime)
+            {
+                if (notVisible == true)
+                    makeVisible();
+
+                movePiece();
+            }
+            else
+            {
+                waitTimer += Time.deltaTime;
+            }
         }
     }
 
