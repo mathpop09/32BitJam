@@ -64,10 +64,12 @@
     <Compile Include="Assets\PlayerMovement.cs" />
     <Compile Include="Assets\propelAngry.cs" />
     <Compile Include="Assets\globalController.cs" />
+    <Compile Include="Assets\swayingLava.cs" />
     <Compile Include="Assets\DestroyableCubes.cs" />
     <Compile Include="Assets\helpText.cs" />
     <Compile Include="Assets\tetrisPiece.cs" />
-    <Compile Include="Assets\swayingLava.cs" />
+    <Compile Include="Assets\riseScript.cs" />
+    <Compile Include="Assets\riseTrigger.cs" />
   </ItemGroup>
   <ItemGroup>
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

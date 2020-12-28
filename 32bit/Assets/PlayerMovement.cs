@@ -33,6 +33,12 @@ public class PlayerMovement : MonoBehaviour
     
     void Update()
     {
+
+        if (this.GetComponent<Rigidbody>().velocity.y <= -20)
+        {
+            Vector3 theVelocity = this.GetComponent<Rigidbody>().velocity;
+            this.GetComponent<Rigidbody>().velocity = new Vector3(theVelocity.x, -20.0f, theVelocity.z);
+        }
         if (!moveable)
         {
             disableTimer += Time.deltaTime;
@@ -107,6 +113,10 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnTriggerExit(Collider groundCollider)
     {
+        if (groundCollider.gameObject.tag == "rising platform")
+        {
+            transform.parent = null;
+        }
         grounded = false; 
     }
     private void OnTriggerEnter(Collider groundCollider)
@@ -115,6 +125,11 @@ public class PlayerMovement : MonoBehaviour
     }
     private void OnTriggerStay(Collider groundCollider)
     {
+        if (groundCollider.gameObject.tag == "rising platform")
+        {
+            Debug.Log("chungus");
+            transform.parent = groundCollider.gameObject.transform;
+        }
         grounded = true;
     }
 
