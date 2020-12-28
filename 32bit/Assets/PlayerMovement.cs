@@ -113,11 +113,11 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnTriggerExit(Collider groundCollider)
     {
-        if (groundCollider.gameObject.tag == "rising platform")
+        grounded = false;
+        if (groundCollider.gameObject.tag == "rising platform" && grounded == true)
         {
             transform.parent = null;
         }
-        grounded = false; 
     }
     private void OnTriggerEnter(Collider groundCollider)
     {
@@ -129,6 +129,10 @@ public class PlayerMovement : MonoBehaviour
         {
             Debug.Log("chungus");
             transform.parent = groundCollider.gameObject.transform;
+        }
+        else
+        {
+            //transform.parent = null;
         }
         grounded = true;
     }
