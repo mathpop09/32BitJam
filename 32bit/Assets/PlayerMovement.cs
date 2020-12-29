@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -18,7 +19,13 @@ public class PlayerMovement : MonoBehaviour
 
     public bool moveable = true;
     public float disableLength;
-    private float disableTimer; 
+    private float disableTimer;
+
+    public GameObject spawnPoint;
+
+    private bool dead = false;
+    public AudioClip deathSound;
+    public Sprite deathSprite;
    // Start is called before the first frame update
 
     
@@ -29,6 +36,8 @@ public class PlayerMovement : MonoBehaviour
 
         audioPlayer = this.GetComponent<AudioSource>();
         groundCollider = this.GetComponent<BoxCollider>();
+
+        this.transform.position = spawnPoint.transform.position;
     }
     
     void Update()
@@ -44,6 +53,10 @@ public class PlayerMovement : MonoBehaviour
             disableTimer += Time.deltaTime;
             if (disableTimer >= disableLength)
             {
+                if (dead == true)
+                {
+                    SceneManager.LoadScene(SceneManager.GetActiveScene().name, LoadSceneMode.Single);
+                }
                 moveable = true;
             }
         }
@@ -122,6 +135,29 @@ public class PlayerMovement : MonoBehaviour
     private void OnTriggerEnter(Collider groundCollider)
     {
         grounded = true;
+        /*
+        if (dead == false && groundCollider.gameObject.tag == "Enemy")
+        {
+            dead = true;
+            moveable = false;
+            audioPlayer.clip = deathSound;
+            audioPlayer.Play();
+            disableTimer = 2.0f;
+        }
+        */
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (dead == false && collision.gameObject.tag == "Enemy")
+        {
+            dead = true;
+            moveable = false;
+            audioPlayer.clip = deathSound;
+            audioPlayer.Play();
+            disableTimer = 2.0f;
+            this.GetComponent<SpriteRenderer>().sprite = deathSprite;
+        }
     }
     private void OnTriggerStay(Collider groundCollider)
     {

@@ -57,9 +57,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scenes\Scene 3\presentTrigger.cs" />
+    <Compile Include="Assets\riseTrigger.cs" />
     <Compile Include="Assets\movePlayerUp.cs" />
     <Compile Include="Assets\cameraController.cs" />
     <Compile Include="Assets\Scenes\TriggerOrnament.cs" />
+    <Compile Include="Assets\riseScript.cs" />
     <Compile Include="Assets\lava.cs" />
     <Compile Include="Assets\PlayerMovement.cs" />
     <Compile Include="Assets\propelAngry.cs" />
@@ -68,8 +70,7 @@
     <Compile Include="Assets\DestroyableCubes.cs" />
     <Compile Include="Assets\helpText.cs" />
     <Compile Include="Assets\tetrisPiece.cs" />
-    <Compile Include="Assets\riseScript.cs" />
-    <Compile Include="Assets\riseTrigger.cs" />
+    <Compile Include="Assets\teleportToFirst.cs" />
   </ItemGroup>
   <ItemGroup>
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
