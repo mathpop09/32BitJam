@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Scene 3/giftLevel.unity
     guid: dcdd6a5b5d1118c40bba184de88bab9b
+  - enabled: 1
+    path: Assets/Scenes/Last Scene/Star Scene.unity
+    guid: 49973cb8736300b4b8ffd365b292bf44
   m_configObjects: {}
