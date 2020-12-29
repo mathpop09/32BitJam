@@ -134,9 +134,10 @@ public class PlayerMovement : MonoBehaviour
     }
     private void OnTriggerEnter(Collider groundCollider)
     {
-        grounded = true;
-        /*
-        if (dead == false && groundCollider.gameObject.tag == "Enemy")
+        if (groundCollider.gameObject.tag != "smashTrigger")
+            grounded = true;
+        
+        if (dead == false && groundCollider.gameObject.tag == "smashTrigger" && grounded == true)
         {
             dead = true;
             moveable = false;
@@ -144,7 +145,7 @@ public class PlayerMovement : MonoBehaviour
             audioPlayer.Play();
             disableTimer = 2.0f;
         }
-        */
+        
     }
 
     private void OnCollisionEnter(Collision collision)
