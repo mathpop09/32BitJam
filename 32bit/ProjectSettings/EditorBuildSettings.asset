@@ -17,4 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Last Scene/Star Scene.unity
     guid: 49973cb8736300b4b8ffd365b292bf44
+  - enabled: 1
+    path: Assets/Scenes/Game Over Scene/GO.unity
+    guid: aa0b0cb0a7fb2e14795eff4d6ed26d38
   m_configObjects: {}

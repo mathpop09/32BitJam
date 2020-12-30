@@ -68,11 +68,15 @@
     <Compile Include="Assets\teleportToSecond.cs" />
     <Compile Include="Assets\globalController.cs" />
     <Compile Include="Assets\swayingLava.cs" />
+    <Compile Include="Assets\teleportToThird.cs" />
     <Compile Include="Assets\DestroyableCubes.cs" />
     <Compile Include="Assets\teleportToFirst.cs" />
     <Compile Include="Assets\helpText.cs" />
     <Compile Include="Assets\tetrisPiece.cs" />
-    <Compile Include="Assets\teleportToThird.cs" />
+    <Compile Include="Assets\toActivate.cs" />
+    <Compile Include="Assets\leftPounder.cs" />
+    <Compile Include="Assets\rightPounder.cs" />
+    <Compile Include="Assets\teleportToEnd.cs" />
   </ItemGroup>
   <ItemGroup>
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

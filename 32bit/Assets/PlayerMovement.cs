@@ -42,6 +42,10 @@ public class PlayerMovement : MonoBehaviour
     
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Application.Quit();
+        }
 
         if (this.GetComponent<Rigidbody>().velocity.y <= -20)
         {
@@ -77,6 +81,7 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+        
         if (moveable)
         {
             if (turnRightMode == false && (Quaternion.Angle(transform.localRotation, Quaternion.Euler(LeftRot))) > 0.0000001)
