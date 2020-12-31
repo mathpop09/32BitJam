@@ -4782,7 +4782,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   jumpPower: 8
-  speed: 0.06
+  speed: 0.065
   turnSpeed: 10
   jumpSound: {fileID: 8300000, guid: 76626e0ad0b94ad47979003a617714ec, type: 3}
   moveable: 1

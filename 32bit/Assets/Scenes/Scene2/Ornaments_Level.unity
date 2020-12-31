@@ -48152,7 +48152,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   jumpPower: 8
-  speed: 0.06
+  speed: 0.065
   turnSpeed: 10
   jumpSound: {fileID: 8300000, guid: 76626e0ad0b94ad47979003a617714ec, type: 3}
   moveable: 1
@@ -121685,7 +121685,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85c2a679cb6a3c84ab0ab78435d36815, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 0.025
+  moveSpeed: 0.035
   lengthWait: 3
 --- !u!54 &2132438120
 Rigidbody:

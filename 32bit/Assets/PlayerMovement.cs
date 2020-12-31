@@ -149,8 +149,20 @@ public class PlayerMovement : MonoBehaviour
             audioPlayer.clip = deathSound;
             audioPlayer.Play();
             disableTimer = 2.0f;
+            this.GetComponent<SpriteRenderer>().sprite = deathSprite;
+
         }
-        
+
+        if (dead == false && groundCollider.gameObject.tag == "Enemy")
+        {
+            dead = true;
+            moveable = false;
+            audioPlayer.clip = deathSound;
+            audioPlayer.Play();
+            disableTimer = 2.0f;
+            this.GetComponent<SpriteRenderer>().sprite = deathSprite;
+        }
+
     }
 
     private void OnCollisionEnter(Collision collision)
